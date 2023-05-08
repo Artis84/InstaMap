@@ -123,12 +123,6 @@ iframe {
     border: 2px solid black;
 }
 
-.video-container img:hover {
-    border: none;
-    background-color: red;
-    padding: 2px;
-}
-
 .video-container {
     cursor: pointer;
 }
