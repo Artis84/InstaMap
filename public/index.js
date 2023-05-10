@@ -28,7 +28,7 @@ myMap.on("click", async (e) => {
     const overlayNode = document.querySelector(".overlay") || undefined;
     try {
         // Search for YouTube videos related to the city name
-        const youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&location=${lat},${lng}&locationRadius=1m&key=AIzaSyD5WI9PN7w7s8lhVj1U5QBICulQxjiZK9U`;
+        const youtubeUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&location=${lat},${lng}&locationRadius=1m&key=AIzaSyC7-RXnQqPhr4iBVe8iyh-2j4qiOBITQfY`;
 
         const response = await fetch(youtubeUrl);
         const data = await response.json();
@@ -67,10 +67,12 @@ myMap.on("click", async (e) => {
             thumbnail.classList.add("thumbnail");
             videoContainer.appendChild(thumbnail);
 
-            const title = document.createElement("div");
+            const titleContainer = document.createElement("div");
+            const title = document.createElement("p");
             title.textContent = video.title;
-            title.classList.add("title");
-            videoContainer.appendChild(title);
+            titleContainer.classList.add("title");
+            titleContainer.appendChild(title);
+            videoContainer.appendChild(titleContainer);
 
             videoContainer.addEventListener("click", function () {
                 // Create a popup and display the YouTube video
@@ -99,7 +101,7 @@ myMap.on("click", async (e) => {
         }
     } catch (error) {
         statusNode.style.display = "block";
-        error === "No results found" ? (statusNode.innerHTML = "No results found") : (statusNode.innerHTML = "An error occured 😟");
+        error === "No results found" ? (statusNode.innerHTML = "No results found 😕") : (statusNode.innerHTML = "An error occured 😟");
         console.error(error);
     }
 });
